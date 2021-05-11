@@ -1,52 +1,74 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import Constants from 'expo-constants';
 
-export default StyleSheet.create({
+import EStyleSheet from "react-native-extended-stylesheet";
+
+const Styles = EStyleSheet.create({
 
     container: {
         flex: 1,
-        paddingHorizontal: 24,
-        paddingTop: Constants.statusBarHeight + 60,
-        alignItems: "center",
-        backgroundColor: "#3d3d3e"
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: "#3d3d3e",
+    },
+
+    content: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%'
+    },
+
+    logoContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     logo: {
-        width: 150,
-        height: 146,
+        width: '10rem',
+        height: '10rem',
         opacity: 0.85,
     },
 
+    headerContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '2rem'
+    },
 
     headerText: {
         fontSize: 24,
         fontWeight: "bold",
         color: "#fff",
-        margin: 30
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    formContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     textInput: {
-        width: 250,
+        width: '75%',
         borderRadius: 6,
-        height: 40,
-        paddingLeft: 20,
-        margin: 5,
+        height: '2.5rem',
+        paddingLeft: '1rem',
+        marginBottom: '0.5rem',
         backgroundColor: "#e0e3e3"
     },
 
     actions: {
-        marginTop: 16,
-        marginLeft: 15,
+        marginTop: '0.5rem',
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
     },
 
     action: {
         backgroundColor: '#e02041',
         borderRadius: 6,
-        height: 40,
-        marginRight: 15,
-        width: '85%',
+        height: '2.5rem',
+        width: '75%',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -54,15 +76,18 @@ export default StyleSheet.create({
 
     actionText: {
         color: '#FFF',
-        fontSize: 12,
+        fontSize: '0.8rem',
         fontWeight: 'bold'
     },
 
     validationError: {
         color: "#f20202",
         fontWeight: "bold",
-        fontSize: 12
+        fontSize: '0.8rem'
     }
 
-
 });
+
+EStyleSheet.build()
+
+export default Styles;
