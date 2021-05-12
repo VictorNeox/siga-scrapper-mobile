@@ -13,7 +13,7 @@ import { withFormik } from 'formik';
 import * as Yup from 'yup'
 
 
-import { isSignedIn, onSignIn, onSignOut } from '../../services/auth';
+import { onSignIn } from '../../services/auth';
 import api from '../../services/api';
 
 const Form = (props) => {
@@ -66,7 +66,7 @@ const Form = (props) => {
 }
 export default withFormik({
 
-    mapPropsToValues: () => ({ login: '', password: '', }),
+    mapPropsToValues: () => ({ login: '', password: '', handleLogin: '' }),
 
     validationSchema: Yup.object().shape({
         login: Yup.string()
@@ -85,7 +85,7 @@ export default withFormik({
         };
 
         await api.post('/student/login', data)
-            .then((response) => {
+            .then(async (response) => {
                 onSignIn(response.data.token);
             })
             .catch(error => {
