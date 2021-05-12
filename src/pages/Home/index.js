@@ -4,13 +4,14 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 
-import { AuthContext } from '../../services/auth';
+import { AuthContext, onSignOut } from '../../services/auth';
 
 
 const Home = (props) => {
 
     const { signOut } = React.useContext(AuthContext);
     async function handleLogout() {
+        onSignOut();
         signOut();
     }
 
