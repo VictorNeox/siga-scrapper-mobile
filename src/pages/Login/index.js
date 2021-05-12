@@ -13,14 +13,20 @@ import { withFormik } from 'formik';
 import * as Yup from 'yup'
 
 
-import { onSignIn } from '../../services/auth';
+import { AuthContext, onSignIn } from '../../services/auth';
 import api from '../../services/api';
 
 const Form = (props) => {
 
-    const navigation = useNavigation();
+    const { signIn } = React.useContext(AuthContext);
 
     const [hidePass, setHidePass] = useState(true);
+
+    function handleLogin(token) {
+        signIn(token);
+    }
+
+    props.values.handleLogin = handleLogin;
 
     return (
         <View style={Styles.container}>
@@ -86,12 +92,12 @@ export default withFormik({
 
         await api.post('/student/login', data)
             .then(async (response) => {
-                onSignIn(response.data.token);
+                await onSignIn(response.data.token);
+                values.handleLogin(response.data.token)
             })
             .catch(error => {
-                console.log(error)
-                // const message = (error.response.status === 400) ? 'Usuário ou senha incorretos.' : 'Um erro ocorreu, tente novamente!';
-                // ToastAndroid.show(message, ToastAndroid.SHORT);
+                const message = (error.response.status === 400) ? 'Usuário ou senha incorretos.' : 'Um erro ocorreu, tente novamente!';
+                ToastAndroid.show(message, ToastAndroid.SHORT);
             });
     }
 })(Form);

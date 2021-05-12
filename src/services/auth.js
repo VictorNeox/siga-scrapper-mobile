@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createContext } from 'react';
 
 export const TOKEN_KEY = "@neoXFatec:token";
 
@@ -11,3 +12,5 @@ export const isSignedIn = async () => {
 
     return (token !== null);
 }
+
+export const AuthContext = createContext();

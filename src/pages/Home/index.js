@@ -2,14 +2,18 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
 import { View, Text, TouchableOpacity } from 'react-native';
-import { onSignOut } from '../../services/auth';
+
+
+import { AuthContext } from '../../services/auth';
 
 
 const Home = (props) => {
 
+    const { signOut } = React.useContext(AuthContext);
     async function handleLogout() {
-        await onSignOut();
+        signOut();
     }
+
     return (
         <View>
             <Text>ALOALOALO</Text>
