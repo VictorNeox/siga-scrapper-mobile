@@ -64,7 +64,7 @@ const Styles = EStyleSheet.create({
     },
 
     action: {
-        backgroundColor: '#e02041',
+        backgroundColor: '#9D4EED',
         borderRadius: 6,
         height: '2.5rem',
         width: '75%',

@@ -26,6 +26,7 @@ const Home = (props) => {
 
     const [basicInfo, setBasicInfo] = useState({});
     const [subjects, setSubjects] = useState([]);
+    const [schedules, setSchedules] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     async function handleLogout() {
@@ -74,18 +75,49 @@ const Home = (props) => {
             });
     }
 
-    function renderSubjects({ subject, index }) {
+    async function loadSchedules() {
+        const token = await getToken();
+
+        if (!token) return false;
+
+        const headers = {
+            Authorization: token
+        }
+
+        await api.get('/student/schedule', { headers })
+            .then((response) => {
+                setSchedules(response.data);
+            });
+    }
+    function renderSubjects({ item: subject, index }) {
         return (
-            <View style={Styles.itemContainer}>
-                <Text style={{ color: '#fff' }}>{`Item ${subject}`}</Text>
+            <View style={Styles.subjectContainer}>
+                <View style={Styles.subjectHeader}>
+                    <Text numberOfLines={1} style={Styles.subjectName}>{`${subject.name}`}</Text>
+                    <Text style={Styles.subjectTeacher}>{subject.initials}</Text>
+                </View>
+                <View style={Styles.subjectGradesContainer}>
+                    {subject.tests.map((test, index) => {
+                        return (
+                            <View>
+                                <Text key={index}>{test.name}</Text>
+                                <Text>{test.score}</Text>
+                            </View>
+                        );
+                    })}
+                </View>
             </View>
         );
     }
 
     useEffect(() => {
-        loadBasicInfo();
-        loadSubjects();
-        setIsLoading(false);
+
+        async function loadInformation() {
+            await loadBasicInfo();
+            await loadSubjects();
+            setIsLoading(false);
+        }
+        loadInformation();
     }, []);
 
     if (isLoading) {

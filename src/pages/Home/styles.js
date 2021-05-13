@@ -5,7 +5,7 @@ import { Dimensions } from "react-native";
 
 export const SLIDER_WIDTH = Dimensions.get('window').width;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
-export const ITEM_HEIGHT = Math.round(ITEM_WIDTH);
+export const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 3 / 2.5);
 
 export const Styles = EStyleSheet.create({
 
@@ -114,21 +114,34 @@ export const Styles = EStyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+
     carouselContainer: {
         marginTop: 50
     },
-    itemContainer: {
+
+    subjectContainer: {
         width: ITEM_WIDTH,
         height: ITEM_HEIGHT,
-        paddingLeft: 100,
-        paddingRight: 100,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'dodgerblue'
+        backgroundColor: '#9D4EED',
+        borderRadius: 15,
     },
-    itemLabel: {
-        color: 'white',
-        fontSize: 24
+
+    subjectHeader: {
+        marginTop: '1rem',
+        marginLeft: '1rem'
+    },
+
+    subjectName: {
+        color: '#EBEAEA',
+        width: '95%',
+        fontSize: '0.8rem'
+    },
+
+    subjectTeacher: {
+        color: '#EBEAEA',
+        width: '95%',
+        marginLeft: '0.5rem',
+        fontSize: '0.6rem'
     },
 });
 
