@@ -1,4 +1,3 @@
-import { StyleSheet, Dimensions } from 'react-native';
 import Constants from 'expo-constants';
 
 import EStyleSheet from "react-native-extended-stylesheet";

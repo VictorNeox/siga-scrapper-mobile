@@ -13,4 +13,9 @@ export const isSignedIn = async () => {
     return (token !== null);
 }
 
+export const getToken = async () => {
+    const token = await AsyncStorage.getItem(TOKEN_KEY);
+
+    return (token) ? `Bearer ${token}` : null
+}
 export const AuthContext = createContext();
