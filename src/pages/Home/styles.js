@@ -3,7 +3,11 @@ import Constants from 'expo-constants';
 import EStyleSheet from "react-native-extended-stylesheet";
 import { Dimensions } from "react-native";
 
-const Styles = EStyleSheet.create({
+export const SLIDER_WIDTH = Dimensions.get('window').width;
+export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
+export const ITEM_HEIGHT = Math.round(ITEM_WIDTH);
+
+export const Styles = EStyleSheet.create({
 
 
     container: {
@@ -103,8 +107,29 @@ const Styles = EStyleSheet.create({
         borderRadius: 100,
     },
 
+
+    carouselView: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    carouselContainer: {
+        marginTop: 50
+    },
+    itemContainer: {
+        width: ITEM_WIDTH,
+        height: ITEM_HEIGHT,
+        paddingLeft: 100,
+        paddingRight: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'dodgerblue'
+    },
+    itemLabel: {
+        color: 'white',
+        fontSize: 24
+    },
 });
 
 EStyleSheet.build()
-
-export default Styles;
