@@ -99,8 +99,8 @@ const Home = (props) => {
                 <View style={Styles.subjectGradesContainer}>
                     {subject.tests.map((test, index) => {
                         return (
-                            <View>
-                                <Text key={index}>{test.name}</Text>
+                            <View key={index}>
+                                <Text>{test.name}</Text>
                                 <Text>{test.score}</Text>
                             </View>
                         );
@@ -128,11 +128,11 @@ const Home = (props) => {
 
     return (
         <View style={Styles.container}>
+            <TouchableOpacity style={Styles.signOutButton} onPress={handleLogout}>
+                <Text style={Styles.signOutText}>Sair</Text>
+                <Icon style={Styles.signOutIcon} name="sign-out" />
+            </TouchableOpacity>
             <View style={Styles.header}>
-                <TouchableOpacity style={Styles.signOutButton} onPress={handleLogout}>
-                    <Text style={Styles.signOutText}>Sair</Text>
-                    <Icon style={Styles.signOutIcon} name="sign-out" />
-                </TouchableOpacity>
                 <View style={Styles.profile}>
                     <Image
                         style={Styles.profilePictureIMG}

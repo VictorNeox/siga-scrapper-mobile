@@ -17,9 +17,6 @@ export const Styles = EStyleSheet.create({
     },
 
     header: {
-        flexDirection: 'row-reverse',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         marginLeft: '0.5rem',
         marginBottom: '1rem',
     },
@@ -27,7 +24,6 @@ export const Styles = EStyleSheet.create({
     profile: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
         marginLeft: '1rem'
     },
 
@@ -46,25 +42,19 @@ export const Styles = EStyleSheet.create({
     signOutButton: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
+        marginRight: '1.5rem'
     },
 
     signOutText: {
         marginRight: '0.6rem',
         color: '#DFDFDF',
-        fontSize: '0.8rem',
+        fontSize: '1rem',
     },
 
     signOutIcon: {
         color: '#DFDFDF',
-        fontSize: '0.8rem',
-    },
-
-    '@media (min-width: 400)': {
-        profilePictureIMG: {
-            width: '10rem',
-            height: '10rem',
-        }
+        fontSize: '1rem',
     },
 
     // basicInformation: {
@@ -102,8 +92,8 @@ export const Styles = EStyleSheet.create({
     // },
 
     profilePictureIMG: {
-        width: '3.5rem',
-        height: '3.5rem',
+        width: '5rem',
+        height: '5rem',
         borderRadius: 100,
     },
 
@@ -122,7 +112,7 @@ export const Styles = EStyleSheet.create({
     subjectContainer: {
         width: ITEM_WIDTH,
         height: ITEM_HEIGHT,
-        backgroundColor: '#9D4EED',
+        backgroundColor: '#8e4dff',
         borderRadius: 15,
     },
 
